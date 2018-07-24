@@ -137,7 +137,7 @@ def start_game():
        return start_game()
 
 def possible_moves():
-    print("\npossible moves:\nU for up\nD for down\nL for left\nR for right")
+    print("\POSSIBLE MOVES ***IMPORTANT***:\nU for up\nD for down\nL for left\nR for right")
 
 def move_up_one_level(current_level):
     return (current_level+1)
@@ -147,73 +147,97 @@ def get_move_from_user():
  
 def story_given_the_level(level_youre_on):
     if level_youre_on == 1:
-         pass
+         print ("You enter the maze looking for your lover")
     if level_youre_on == 2:
-         pass
+         print ("You keep looking because you can feel their presence")
     if level_youre_on == 3:
-         pass
+         print ("You meet an old lady on the way and help her with groceries")
     if level_youre_on == 4:
-         pass
+         print ("She directs you to go in a specific direction")
     if level_youre_on == 5:
-         pass
+         print ("Because you helped the old lady, you gain super powers to help look for your lover")
     if level_youre_on == 6:
-         pass
+         print ("You find a tunnel and are hesitant to go in, but you go in because you are in love with the thought of being in love")
     if level_youre_on == 7:
-         pass
+         print ("You exit the tunnel and realize everything you have been looking for has been right beside you the whole time")
 # --CODE STARTS HEREEEE-- --CODE STARTS HEREEEE-- --CODE STARTS HEREEEE-- --CODE STARTS HEREEEE-- --CODE STARTS HEREEEE--
 clear_terminal()
 
-print("\n----- Heyyy, welcome to the Oppong Adventure Game -----\n")
-print("-----Go through the maze looking for and just have fun -----\n")
+print("\n----- YEEOOO, welcome to the Oppong Adventure Game -----\n")
+print("----- Go through the maze looking for and just have fun -----\n")
 
 press_to_continue()
 clear_terminal()
 user_char = get_char() # GETS USER CHAR FOR THE MAP
 clear_terminal()
 keep_playing = 'Y'
+game_has_begun = True
 
 current_level = 0 #keep track on user position
+if (start_game() == 1 and current_level == 0):
+    clear_terminal()
+    possible_moves()
 
 while True:
 
-    if (start_game() == 1 and current_level == 0):
-        possible_moves()
-        position_0 (user_char)
-
-    if get_move_from_user() == 'R' and current_level == 0:
+    if game_has_begun is True:
+        position_0 (user_char)        
+        game_has_begun = False
+        
+    users_move = get_move_from_user()
+    
+    if users_move == 'R' and current_level == 0:
         clear_terminal()
+        possible_moves()
         current_level = current_level + 1
         position_1(user_char)
-    if get_move_from_user() == 'D' and current_level == 1:
+        story_given_the_level(current_level)
+    elif users_move == 'D' and current_level == 1:
         clear_terminal()
+        possible_moves()
         current_level = current_level + 1        
         position_2(user_char)
-    if get_move_from_user() == 'R' and current_level ==2:
+        story_given_the_level(current_level)
+    elif users_move == 'R' and current_level ==2:
         clear_terminal()
+        possible_moves()
         current_level = current_level + 1
         position_3(user_char)
-    if get_move_from_user() == 'U' and current_level == 3:
+        story_given_the_level(current_level)
+    elif users_move == 'U' and current_level == 3:
         clear_terminal()
+        possible_moves()
         current_level = current_level +1
         position_4(user_char)
-    if get_move_from_user() == 'U' and current_level == 4:
+        story_given_the_level(current_level)
+    elif users_move == 'U' and current_level == 4:
         clear_terminal()
+        possible_moves()
         current_level = current_level + 1
         position_5(user_char)
-    if  get_move_from_user() == 'L' and current_level == 5:
+        story_given_the_level(current_level)
+    elif  users_move == 'L' and current_level == 5:
         clear_terminal()
+        possible_moves()
         current_level = current_level + 1
         position_6(user_char)
-    if get_move_from_user() == 'L' and current_level == 6:
+        story_given_the_level(current_level)
+    elif users_move == 'L' and current_level == 6:
         clear_terminal()
+        possible_moves()
         current_level = current_level + 1
         position_7(user_char)
-
-        keep_playing  = input("Do you want to keep playing? Y, N: ")
+        story_given_the_level(current_level)
+        keep_playing  = input("Do you want to keep playing or naa? Y, or another other char to quit: ")
         
         if keep_playing is 'Y':
             current_level = 0
             clear_terminal()
+            game_has_begun = True
+        else:
+            print("AHHH You cool for Playing and have a blessed Day")
+            break
     
-        
-        
+    else:
+        bad_move()
+       
